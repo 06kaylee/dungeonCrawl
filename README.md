@@ -6,4 +6,4 @@ Compile with
 
 `g++ main.cpp -Iglfw/include/ -o test.exe -L. -Lglfw3 glfw/lib-mingw-w64/libglfw3.a -lopengl32 -lgdi32`
 
-fuck libraries
+libraries are frustrating
