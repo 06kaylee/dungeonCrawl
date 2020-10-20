@@ -36,3 +36,14 @@ while player.getHp > 0 {
 
 
 }
+// is the enemy generated in here? or before?
+void battle(Character p, int difficulty){
+    // make a monster object
+    Monster m(difficulty);
+    while p.getHp > 0 and m.getHp > 0{
+        // get player action
+
+        // generate a random monster action 
+    }
+    // start looping to get user input to see what they did
+}

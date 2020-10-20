@@ -5,11 +5,16 @@ using namespace std;
 class Monster {
 protected:
     // it would be better to do this with inheritence, bc char and monster share a lot of stuff
+    //todo: make an array of names to pick from ( name will be like " goblin", or "CS professor")
     string name;
     int hp;
     int maxhp;
     int strength;
 public:
+    Monster(int diff){
+        //generates a random monster based on the game's difficulty
+        // can use math.random * diff or something :^) 
+    }
     Monster(String n,int h,int s){
         name = n;
         maxhp = h;
