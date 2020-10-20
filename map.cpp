@@ -36,7 +36,7 @@ vector<vector<int>> generateRooms(vector<vector<int>> vec) {
     //cout << numrooms << endl;
     while(numrooms > 0) {
 
-        
+
         int rsize = 3 + rand() % vec.size()/5;
         int p1 = 1 + rand() % vec.size()-rsize;
         int p2 = 1 + rand() % vec[0].size()-rsize;
@@ -56,14 +56,14 @@ vector<vector<int>> generateRooms(vector<vector<int>> vec) {
     return vec;
 }
 
-int makemap(int x,int y) {
+vector<vector<int>> makemap(int x,int y) {
     //int x = 80;
     //int y = 80;
     vector<vector<int>> map(x,vector<int>(y,1));
 
     map = generateRooms(map);
     //map = traverse(map);
-    // This part prints out the map 
+    // This part prints out the map
     for(int xi =0;xi<x;xi++){
         for( int yi=0;yi<y;yi++){
             if (map[xi][yi] == 1) {
@@ -76,18 +76,17 @@ int makemap(int x,int y) {
         }
         cout << endl;
     }
-    return 1;
-    
-    
+    return map;
+
+
 }
 
 
-
+// this main is temporary, just proving that a map object can be generated basically. 
 int main(){
     srand(time(NULL));
     //int a = 6;
     //int b = 8;
-    int m = makemap(50,50);
+    vector<vector<int>> m = makemap(50,50);
     return 1;
 }
-
