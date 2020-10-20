@@ -1,20 +1,22 @@
 #include <iostream>
 #include <vector>
 
+#include "obj.h"
+
 using namespace std;
 
-class Character {
-protected:
-    string name;
-    int hp;
-    int maxhp;
-    int strength;
-    int mana;
-    int maxmana;
-    vector<Item> inventory;
-    public:
+//class Character {
+//protected:
+//    string name;
+//    int hp;
+//    int maxhp;
+//    int strength;
+//    int mana;
+//    int maxmana;
+//    vector<Item> inventory;
+//    public:
         // contructor
-        Character() {
+        Character::Character() {
             name = "husk";
             maxhp = 5;
             hp = maxhp;
@@ -22,45 +24,45 @@ protected:
             maxmana = 2;
             mana = maxmana;
         }
-        string getName(){
+        string Character::getName(){
             return name;
         }
-        void setName(string s){
+        void Character::setName(string s){
             name = s;
         }
-        int getHp(){
+        int Character::getHp(){
             return hp;
         }
-        void setHp(int h){
+        void Character::setHp(int h){
             hp = h;
         }
-        int getMaxHp(){
+        int Character::getMaxHp(){
             return maxhp;
         }
-        void setMaxHp(int m){
+        void Character::setMaxHp(int m){
             maxhp = m;
         }
-        int getStrength(){
+        int Character::getStrength(){
             return strength;
         }
-        void setStrength(int s){
+        void Character::setStrength(int s){
             strength = s;
         }
-        int getMana(){
+        int Character::getMana(){
             return mana;
         }
-        void setMana(int m){
+        void Character::setMana(int m){
             mana = m;
         }
-        int getMaxMana(){
+        int Character::getMaxMana(){
             return maxmana;
         }
-        void setMaxMana(int m){
+        void Character::setMaxMana(int m){
             maxmana = m;
         }
-};
-int main(){
+//};
+int ma232in(){
     Character a;
-    cout << a.getMana() << endl;
+   cout << a.getMana() << endl;
     cout << a.getName() << endl;
 }

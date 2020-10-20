@@ -1,51 +1,50 @@
 #include <iostream>
+#include "obj.h"
 
 using namespace std;
 
-class Monster {
-protected:
-    // it would be better to do this with inheritence, bc char and monster share a lot of stuff
-    //todo: make an array of names to pick from ( name will be like " goblin", or "CS professor")
-    string name;
-    int hp;
-    int maxhp;
-    int strength;
-public:
-    Monster(int diff){
+//name will be like " goblin", or "CS professor")
+  //  
+
+    Monster::Monster(int diff){
+        
+        int n = rand() % 3;
+        name = names[n];
+        maxhp = 10 + rand() % diff;
+        hp=  maxhp;
+        strength = 3 + rand() % diff;
         //generates a random monster based on the game's difficulty
         // can use math.random * diff or something :^) 
     }
-    Monster(String n,int h,int s){
+    Monster::Monster(string n,int h,int s){
         name = n;
         maxhp = h;
         strength = s;
     }
-    string getName(){
+    string Monster::getName(){
         return name;
     }
-    void setName(string s){
+    void Monster::setName(string s){
         name = s;
     }
-    int getHp(){
+    int Monster::getHp(){
         return hp;
     }
-    void setHp(int h){
+    void Monster::setHp(int h){
         hp = h;
     }
-    int getMaxHp(){
+    int Monster::getMaxHp(){
         return maxhp;
     }
-    void setMaxHp(int m){
+    void Monster::setMaxHp(int m){
         maxhp = m;
     }
-    int getStrength(){
+    int Monster::getStrength(){
         return strength;
     }
-    void setStrength(int s){
+    void Monster::setStrength(int s){
         strength = s;
     }
 
 
 
-
-};

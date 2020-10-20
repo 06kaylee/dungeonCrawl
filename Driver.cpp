@@ -1,5 +1,9 @@
 #include <iostream>
 #include <vector>
+#include "Item.cpp"
+#include "Character.cpp"
+#include "Monster.cpp"
+#include "map.cpp"
 
 using namespace std;
 // this is the file that will "run" the game, basically setting variables, and then running the game loop
@@ -8,10 +12,9 @@ int main(){
 int difficulty;
 string cname;
 cout << "enter an int for difficulty... 1-10 suggested but put whatever you want, go wild" << endl;
-cin << difficulty;
-cin << "enter a name for your character. or enter 1 and I give your character a dumb sounding name " << endl;
-cint << cname;
-if cname == '1':
+cin >> difficulty;
+cout << "enter a name for your character. or enter 1 and I give your character a dumb sounding name " << endl;
+cin >> cname;
     // get the users windows account name, and set the character name to that
 // generate a Character
 // should there be prebuilt characters?
@@ -21,7 +24,7 @@ vector<vector<int>> map = makemap(difficulty,difficulty); // <-- difficulty incr
 // make a dungeon object
 
 // loooooooop
-while player.getHp > 0 {
+while (player.getHp() > 0) {
     // "clears" the screen... the lazy way
     for (int i=0;i<20;i++){
         cout <<endl;
@@ -40,7 +43,7 @@ while player.getHp > 0 {
 void battle(Character p, int difficulty){
     // make a monster object
     Monster m(difficulty);
-    while p.getHp > 0 and m.getHp > 0{
+    while (p.getHp() > 0 and m.getHp() > 0) {
         // get player action
 
         // generate a random monster action 

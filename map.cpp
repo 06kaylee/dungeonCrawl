@@ -83,7 +83,7 @@ vector<vector<int>> makemap(int x,int y) {
 
 
 // this main is temporary, just proving that a map object can be generated basically. 
-int main(){
+int ma22in(){
     srand(time(NULL));
     //int a = 6;
     //int b = 8;
