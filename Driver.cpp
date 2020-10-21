@@ -54,7 +54,7 @@ while (player.getHp() > 0) {
 
 // resolve user input ( battle handler? )
 
-
+return 1;
 }
 // is the enemy generated in here? or before?
 void battle(Character p, int difficulty){

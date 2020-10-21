@@ -61,8 +61,8 @@ using namespace std;
             maxmana = m;
         }
 //};
-int ma232in(){
-    Character a;
-   cout << a.getMana() << endl;
-    cout << a.getName() << endl;
-}
+//int ma232in(){
+//    Character a;
+//   cout << a.getMana() << endl;
+//    cout << a.getName() << endl;
+//}
