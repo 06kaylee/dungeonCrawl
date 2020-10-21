@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+
+
 using namespace std;
 
 
@@ -75,4 +77,25 @@ class Character
         void setMaxMana(int m);
     
 };
+#endif
+
+#ifndef Map_H
+#define Map_H
+class Map{
+    protected:
+        vector<vector<int>> area;
+        int playerx;
+        int playery;
+        int difficult;
+    public:
+        Map(int x);
+        Map();
+        void printMap();
+        void fillMap();
+        int move(int x, int y);
+        vector<vector<int>> makeMap(int x,int y);
+        vector<vector<int>> generateRooms(vector<vector<int>> vec);
+        vector<vector<int>> generateHalls(vector<vector<int>> vec,int x, int y);
+        vector<vector<int>> getMap();
+};   
 #endif

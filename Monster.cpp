@@ -1,5 +1,5 @@
 #include <iostream>
-#include "obj.h"
+//#include "obj.h"
 
 using namespace std;
 
