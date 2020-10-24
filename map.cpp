@@ -17,6 +17,17 @@ vector<vector<int>> Map::getMap(){
     return area;
 }
 void Map::fillMap(){
+    //creates three exits on the map, placed randomly 
+    int exitfound = 3;
+    while (exitfound) {
+        int p1 = 1 + rand() % area.size()-1;
+        int p2 = 1 + rand() % area[0].size()-1;
+        if (area[p1][p2] == 1) {
+            area[p1][p2] = 5;
+            exitfound --;
+        }
+    }
+    
     for (int x=0;x<area.size();x++) {
         for (int y=0;y<area[0].size();y++){
             if (area[x][y] == 1) {
@@ -35,15 +46,32 @@ void Map::fillMap(){
             }
         }
     }
+    // this part generates a starting location for the player 
+    int found = 1;
+    int x=0;
+    int y=0;
+    while (found) {
+        if (area[x][y] == 1) {
+            area[x][y] = 6;
+            found --; // if a starting location is found, stop looping, and set the playerx and y coordinates.
+            playerx = x;
+            playery = y;
+        }
+        x++;
+        y++;
+        
+    }
 }
 // call this with either -1, 0 or 1 in one of the numbers, not both LOL 
 int Map::move(int x,int y) {
+    area[playerx][playery] = 1;
     if (x != 0 && x+playerx < area.size() && x+playerx > 0) {
         if (area[playerx+x][playery] != 0){ playerx += x; }    
     }
     if (y != 0 && y + playery < area[0].size() && y+playery > 0) {
         if (area[playerx][playery+y] != 0){ playery += y; }
     }
+    area[playerx][playery] = 6;
     return area[playerx][playery];
     }
 // in this implementation, 1= a wall, while 0 = a hall, or traversable area
@@ -144,7 +172,7 @@ void Map::printMap(){
         for(int xi =0;xi<area.size()-1;xi++){
         for( int yi=0;yi<area[0].size()-1;yi++){
             if (area[xi][yi] == 1) {
-                cout << ".";
+                cout << " ";
             }
             else if (area[xi][yi] == 2) {//monster
                 cout << "M";
@@ -154,6 +182,12 @@ void Map::printMap(){
             }
             else if (area[xi][yi] == 4) {//trap
                 cout << "&";
+            }
+            else if (area[xi][yi] == 6) {//character
+                cout << "O";
+            }
+            else if (area[xi][yi] == 5) {// Exit !! 
+                cout << "E";
             }
             else {// wall LOL ( this is zero ) 
                 cout << "*";

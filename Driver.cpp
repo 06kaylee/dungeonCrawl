@@ -8,6 +8,8 @@
 #include "Map.cpp"
 #include "Item.cpp"
 
+#include <stdlib.h>
+
 //#include "Item.cpp"
 //#include "Character.cpp"
 //#include "Monster.cpp"
@@ -21,7 +23,7 @@ Character player;
 
 
 int main(){
-int choice;
+string choice;
 //seed the random number generator 
 srand(time(NULL));
 int difficulty;
@@ -41,12 +43,28 @@ Map level = Map(difficulty*10);
 // loooooooop
 while (player.getHp() > 0) {
     // "clears" the screen... the lazy way
-    for (int i=0;i<20;i++){
+    system("CLS");
+    for (int i=0;i<5;i++){
         cout <<endl;
     }
     level.printMap();
     cout << "select an option from the list" << endl;
     cin >> choice;
+    if (choice == "w"){
+        level.move(-1,0);
+    }
+    else if (choice == "a") {
+        level.move(0,-1);
+    }
+    else if (choice == "s") {
+        level.move(1,0);
+    }
+    else if (choice == "d") {
+        level.move(0,1);
+    }
+    else {
+        cout << "invalid choice, please choose from W A S D" << endl;
+    }
     // run a function to generate options < -- this is better than a static setup because you can use it for battle, or for map traversal
 
 }
