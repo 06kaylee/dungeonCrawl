@@ -15,15 +15,15 @@ using namespace std;
     }
     Monster::Monster(int diff){
 
-        int n = rand() % 3;
+        int n = rand() % 3;// this sets the monster's name
         name = names[n];
-        maxhp = 10 + rand() % diff;
+        maxhp = 10 + rand() % diff*3;
         hp=  maxhp;
         //Commented out the rand in strength; will change later for different types of monsters
-        strength = 3; //+ rand() % diff;
+        strength = 3 + rand() % diff; //+ rand() % diff;
         //generates a random monster based on the game's difficulty
         // can use math.random * diff or something :^)
-        alive = 1;
+        alive = 1;// it's ALIVE! 
     }
     Monster::Monster(string n,int h,int s){
         name = n;

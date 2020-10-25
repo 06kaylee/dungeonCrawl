@@ -16,6 +16,21 @@ Map::Map(int x) {
 vector<vector<int>> Map::getMap(){
     return area;
 }//asdhjahsdkjhakjshdkahskdjhakj
+void Map::repopulate(int num){// this method tries to add some new stuff to the map when you visit an exit... or something... whenever you call it really, but it makes it so that the map doesn;t become empty with no way to progress 
+  for (int x=0;x<num;x++){
+    int p1 = 1 + rand() % area.size()-1;
+    int p2 = 1 + rand() % area[0].size()-1;
+      if (area[p1][p2] == 1) {
+        int chance = rand() % 100 + 1;
+        if (chance == 100) {
+            area[x][y] = 3;
+        }
+        else if (chance >= 95) {
+            area[x][y] = 2;
+        }
+      }
+  }
+}
 void Map::fillMap(){
     //creates three exits on the map, placed randomly
     int exitfound = 3;
@@ -47,6 +62,7 @@ void Map::fillMap(){
         }
     }
     // this part generates a starting location for the player
+    // I think mathematically it will always work, but I'm not gonna try and prove that
     int found = 1;
     int x=0;
     int y=0;
@@ -65,7 +81,9 @@ void Map::fillMap(){
 // call this with either -1, 0 or 1 in one of the numbers, not both LOL
 int Map::move(int x,int y) {
   int fight =0;
-    area[playerx][playery] = 1;
+    if (area[playerx][playery] != 5){
+      area[playerx][playery] = 1;
+  }
     if (x != 0 && x+playerx < area.size() && x+playerx > 0) {
         if (area[playerx+x][playery] != 0){ playerx += x; }
     }
@@ -76,7 +94,9 @@ int Map::move(int x,int y) {
       //cout << "fight time ";
       fight++;
     }
-    area[playerx][playery] = 6;
+    if (area[playerx][playery] != 5){// if you hit the exit, you don't overright it ?
+      area[playerx][playery] = 6;
+    }
     if (fight){
       return 1;
     }
@@ -153,52 +173,56 @@ vector<vector<int>> Map::generateRooms(vector<vector<int>> vec) {
 }
 
 vector<vector<int>> Map::makeMap(int x,int y) {
-    //int x = 80;
-    //int y = 80;
     vector<vector<int>> map(x,vector<int>(y,0));
 
     map = generateRooms(map);
-    //map = traverse(map);
-    // This part prints out the map
-    //for(int xi =0;xi<x;xi++){
-    //    for( int yi=0;yi<y;yi++){
-    //        if (map[xi][yi] == 1) {
-    //            cout << "*";
-    //        }
-    //        else {
-    //            cout << " ";
-    //        }
-            //cout <<  << " ";
-    //   }
-    //    cout << endl;
-    //}
     return map;
 
 
 }
-void Map::printMap(){
+void Map::printMap(){// I guess we have to hope that the school computers use a modern version of windows
+//   ANSI escape color codes :
+//
+// Name            FG  BG
+// Black           30  40
+// Red             31  41
+// Green           32  42
+// Yellow          33  43
+// Blue            34  44
+// Magenta         35  45
+// Cyan            36  46
+// White           37  47
+// Bright Black    90  100
+// Bright Red      91  101
+// Bright Green    92  102
+// Bright Yellow   93  103
+// Bright Blue     94  104
+// Bright Magenta  95  105
+// Bright Cyan     96  106
+// Bright White    97  107
+
         for(int xi =0;xi<area.size()-1;xi++){
         for( int yi=0;yi<area[0].size()-1;yi++){
             if (area[xi][yi] == 1) {
                 cout << " ";
             }
             else if (area[xi][yi] == 2) {//monster
-                cout << "M";
+                cout << "\x1B[91mM\x1B[37m";
             }
             else if (area[xi][yi] == 3) {//treasure
-                cout << "T";
+                cout << "\x1B[33mT\x1B[37m";
             }
-            else if (area[xi][yi] == 4) {//trap
-                cout << "&";
+            else if (area[xi][yi] == 4) {//trap ( currently unused )
+                cout << "\x1B[34m&\x1B[37m";
             }
             else if (area[xi][yi] == 6) {//character
-                cout << "O";
+                cout << "\x1B[36mO\x1B[37m";
             }
             else if (area[xi][yi] == 5) {// Exit !!
-                cout << "E";
+                cout << "\x1B[32mE\x1B[37m";
             }
             else {// wall LOL ( this is zero )
-                cout << "*";
+                cout << char(178);
             }
         }
         cout << endl;

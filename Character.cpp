@@ -24,6 +24,9 @@ using namespace std;
             maxmana = 2;
             mana = maxmana;
             alive = 1;
+            xp = 0;
+            level = 1;
+            gold = 0;
         }
         Character::Character(string n) {
           name = n;
@@ -33,12 +36,46 @@ using namespace std;
           maxmana = 2;
           mana = maxmana;
           alive = 1;
+          xp = 0;
+          level = 1;
+          gold =0;
         }
         string Character::getName(){
             return name;
         }
         void Character::setName(string s){
             name = s;
+        }
+        int  Character::getXp(){
+          return xp;
+        }
+        void  Character::setXp(int x){
+          xp = x;
+          // level up?!
+          if (xp   > level * 100) {
+            levelup();
+          }
+        }
+        void  Character::levelup(){
+          level++;
+          cout << "You leveled up! You are now level" << level << endl;
+          int nhp = 2 + rand() % level;
+          cout << "You gained " << nhp << "maximum HP, and 1 Strength " << endl;
+          maxhp += nhp;
+          hp += nhp;
+          strength ++;
+        }
+        int  Character::getLevel(){
+          return level;
+        }
+        void  Character::setLevel(int l){
+          level = l;
+        }
+        void  Character::setGold(int g){
+          gold = g;
+        }
+        int  Character::getGold(){
+          return gold;
         }
         int Character::getHp(){
             return hp;

@@ -50,13 +50,13 @@ class Monster
         bool isAlive();
         void setAlive(bool b);
         int attack();
-        void takeDmg(int dmg); // added these to the header so that the program will compile
+        void takeDmg(int dmg); // added these to the header for you so that the program will compile
         void monsterDieText();
         void printImage();
 };
 #endif
 
-
+// that's a big class lol
 #ifndef Character_H
 #define Character_H
 class Character
@@ -70,6 +70,9 @@ class Character
         int maxmana;
         bool alive;
         vector<Item> inventory;
+        int level;
+        int xp;
+        int gold;
     public:
         Character();
         Character(string n);
@@ -90,7 +93,13 @@ class Character
         void takeDmg(int dmg);
         int attack();
         void characterDieText();
-
+        int getXp();
+        void setXp(int x);
+        int getLevel();
+        void setLevel(int l);
+        void levelup();
+        void setGold(int g);
+        int getGold();
 };
 #endif
 
@@ -112,6 +121,7 @@ class Map{
         vector<vector<int>> generateRooms(vector<vector<int>> vec);
         vector<vector<int>> generateHalls(vector<vector<int>> vec,int x, int y);
         vector<vector<int>> getMap();
+        void repopulate(int n);
 };
 
 #endif
@@ -125,5 +135,6 @@ class Battle{
         Battle(Character ca, Monster mo);
         int fight();
         int getAttackInput();
+        void displayStats();
 };
 #endif
