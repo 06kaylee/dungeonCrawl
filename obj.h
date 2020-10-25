@@ -1,4 +1,4 @@
-// yeah so this is a header LOL 
+// yeah so this is a header LOL
 #include <iostream>
 #include <vector>
 
@@ -9,7 +9,7 @@ using namespace std;
 
 #ifndef Item_H
 #define Item_H
-class Item 
+class Item
 {
     protected:
         string name;
@@ -26,15 +26,17 @@ class Item
 
 #ifndef Monster_H
 #define Monster_H
-class Monster 
+class Monster
 {
     protected:
         string names [3] = {"goblin","Orc","Troll"};
         string name;
         int hp;
         int maxhp;
+        bool alive;
         int strength;
     public:
+        Monster();
         Monster(int diff);
         Monster(string n,int h,int s);
         string getName();
@@ -45,13 +47,19 @@ class Monster
         void setMaxHp(int m);
         int getStrength();
         void setStrength(int s);
+        bool isAlive();
+        void setAlive(bool b);
+        int attack();
+        void takeDmg(int dmg); // added these to the header so that the program will compile
+        void monsterDieText();
+        void printImage();
 };
 #endif
 
 
 #ifndef Character_H
 #define Character_H
-class Character 
+class Character
 {
     protected:
         string name;
@@ -60,9 +68,11 @@ class Character
         int strength;
         int mana;
         int maxmana;
+        bool alive;
         vector<Item> inventory;
     public:
         Character();
+        Character(string n);
         string getName();
         void setName(string s);
         int getHp();
@@ -75,7 +85,12 @@ class Character
         void setMana(int m);
         int getMaxMana();
         void setMaxMana(int m);
-    
+        bool isAlive();
+        void setAlive(bool b);
+        void takeDmg(int dmg);
+        int attack();
+        void characterDieText();
+
 };
 #endif
 
@@ -97,5 +112,18 @@ class Map{
         vector<vector<int>> generateRooms(vector<vector<int>> vec);
         vector<vector<int>> generateHalls(vector<vector<int>> vec,int x, int y);
         vector<vector<int>> getMap();
-};   
+};
+
+#endif
+#ifndef Battle_H
+#define Battle_H
+class Battle{
+    protected:
+        Character c;
+        Monster m;
+    public:
+        Battle(Character ca, Monster mo);
+        int fight();
+        int getAttackInput();
+};
 #endif

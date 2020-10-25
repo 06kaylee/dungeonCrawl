@@ -11,13 +11,13 @@ Map::Map(int x) {
     difficult = x;
     area = Map::makeMap(x,x);
     fillMap();
-}
+}// comment to test
 
 vector<vector<int>> Map::getMap(){
     return area;
-}
+}//asdhjahsdkjhakjshdkahskdjhakj
 void Map::fillMap(){
-    //creates three exits on the map, placed randomly 
+    //creates three exits on the map, placed randomly
     int exitfound = 3;
     while (exitfound) {
         int p1 = 1 + rand() % area.size()-1;
@@ -27,15 +27,15 @@ void Map::fillMap(){
             exitfound --;
         }
     }
-    
+
     for (int x=0;x<area.size();x++) {
         for (int y=0;y<area[0].size();y++){
             if (area[x][y] == 1) {
-                // add stuff to the maze, like treasure, or monsters, and the exit :^) 
+                // add stuff to the maze, like treasure, or monsters, and the exit :^)
                 // treasure = 3
                 // monster = 2
-                // trap? = 4 (TODO) 
-                // exit = 5? (TODO) (place this nonrandomly, and last 
+                // trap? = 4 (TODO)
+                // exit = 5? (TODO) (place this nonrandomly, and last
                 int chance = rand() % 100 + 1;
                 if (chance == 100) {
                     area[x][y] = 3;
@@ -46,7 +46,7 @@ void Map::fillMap(){
             }
         }
     }
-    // this part generates a starting location for the player 
+    // this part generates a starting location for the player
     int found = 1;
     int x=0;
     int y=0;
@@ -59,20 +59,28 @@ void Map::fillMap(){
         }
         x++;
         y++;
-        
+
     }
 }
-// call this with either -1, 0 or 1 in one of the numbers, not both LOL 
+// call this with either -1, 0 or 1 in one of the numbers, not both LOL
 int Map::move(int x,int y) {
+  int fight =0;
     area[playerx][playery] = 1;
     if (x != 0 && x+playerx < area.size() && x+playerx > 0) {
-        if (area[playerx+x][playery] != 0){ playerx += x; }    
+        if (area[playerx+x][playery] != 0){ playerx += x; }
     }
     if (y != 0 && y + playery < area[0].size() && y+playery > 0) {
         if (area[playerx][playery+y] != 0){ playery += y; }
     }
+    if (area[playerx][playery] == 2){
+      //cout << "fight time ";
+      fight++;
+    }
     area[playerx][playery] = 6;
-    return area[playerx][playery];
+    if (fight){
+      return 1;
+    }
+    return 0;
     }
 // in this implementation, 1= a wall, while 0 = a hall, or traversable area
 vector<vector<int>> Map::generateHalls(vector<vector<int>> vec,int x,int y) {
@@ -94,7 +102,7 @@ vector<vector<int>> Map::generateHalls(vector<vector<int>> vec,int x,int y) {
     intermediate = x;
     for (int i = 0-len/2; i < len/2; i++){
     //for(int i=x-len/2;i<x+len/2;i++){
-        intermediate = x + i;    
+        intermediate = x + i;
         if (intermediate > 0 && intermediate < vec.size()-1){
             vec[intermediate][y]=1;
         }
@@ -107,7 +115,7 @@ vector<vector<int>> Map::generateHalls(vector<vector<int>> vec,int x,int y) {
             vec[x][intermediate]=1;
         }
     }
-    //make a perimeter around the outside edge 
+    //make a perimeter around the outside edge
     for (int i=0;i<vec.size();i++){
         vec[i][0] = 0;
         vec[i][vec[0].size()-2] = 0;
@@ -186,10 +194,10 @@ void Map::printMap(){
             else if (area[xi][yi] == 6) {//character
                 cout << "O";
             }
-            else if (area[xi][yi] == 5) {// Exit !! 
+            else if (area[xi][yi] == 5) {// Exit !!
                 cout << "E";
             }
-            else {// wall LOL ( this is zero ) 
+            else {// wall LOL ( this is zero )
                 cout << "*";
             }
         }
@@ -197,7 +205,7 @@ void Map::printMap(){
 }
 }
 
-// this main is temporary, just proving that a map object can be generated basically. 
+// this main is temporary, just proving that a map object can be generated basically.
 //int ma22in(){
  //   srand(time(NULL));
     //int a = 6;

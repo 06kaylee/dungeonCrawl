@@ -18,11 +18,21 @@ using namespace std;
         // contructor
         Character::Character() {
             name = "husk";
-            maxhp = 5;
+            maxhp = 25;
             hp = maxhp;
-            strength = 1;
+            strength = 10;
             maxmana = 2;
             mana = maxmana;
+            alive = 1;
+        }
+        Character::Character(string n) {
+          name = n;
+          maxhp = 25;
+          hp = maxhp;
+          strength = 10;
+          maxmana = 2;
+          mana = maxmana;
+          alive = 1;
         }
         string Character::getName(){
             return name;
@@ -59,6 +69,29 @@ using namespace std;
         }
         void Character::setMaxMana(int m){
             maxmana = m;
+        }
+        bool Character::isAlive(){
+          return alive;
+        }
+        void Character::setAlive(bool b){
+          alive = b;
+        }
+        int Character::attack(){
+          int dmg = rand () % (strength + 1);
+          return dmg;
+        }
+        void Character::takeDmg(int dmg){
+          int hp = getHp();
+          hp = hp - dmg;
+          setHp(hp);
+          if (hp <= 0){
+            setAlive(0);
+          //  characterDieText();
+          }
+        }
+        void Character::characterDieText(){
+          cout << "You died!" << endl;
+          cout << "git good noob!" << endl;
         }
 //};
 //int ma232in(){
