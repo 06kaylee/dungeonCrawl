@@ -2,6 +2,44 @@
 //Class:CS-3150-Dr.Cantrell
 //Version: 10/25/20
 
+// NOTE: to run the program, compile ONLY this file  ( ie : `c++ Driver.cpp -o game.exe` ) 
+
+// Explaination of requirements breakdown.
+//Code Quality (including user interface)	
+// code uses different files for objects, and a header file for the functions and variables in objects. also the UI is pretty sweet I think
+//Logical use of multiple files
+//  broke up most of the functions related to certain objects into their own files.
+//Overall Functionality (Could I break it)
+// you probably could find a way to break it, but it's pretty stable if you're not going out of your way to do so.
+//Logical use of enum type
+// there is no "logical" use of enum. it's just an obfuscation of int, so we did use ints in the way an enum would work, ( with an int having a value that means something, for example, our map is an "array" that contains numbers, each number representing a type of "tile"
+//Proper use of extern variable
+// TODO: add this
+//Proper use of static variable
+// TODO: add this (just add something dumb, we just used members of character object to keep track of anything that might have been static I think ) 
+//Logical use of a struct
+// we used objects instead of structs, as they are fairly similar, but objects can have non-static methods, which was nice for map, and character.
+//Logical use of random number generator
+// random numbers are all over the place, from generating the map, to damage dealt in combat, and reward for winning, or even the event type when you enter a treasure room.
+
+
+
+You must include a code block at the top of your file explaining how you satisfied each rubric goal for any of the points.
+
+All labs must compile for any credit. If you get docked for this, you may challenge this with a demonstration, but the code has to be identical to what you submitted. 
+
+
+
+
+
+
+
+
+
+
+
+
+
 #include <iostream>
 #include <vector>
 #include <time.h>
