@@ -12,11 +12,11 @@
 //Overall Functionality (Could I break it)
 // you probably could find a way to break it, but it's pretty stable if you're not going out of your way to do so.
 //Logical use of enum type
-// there is no "logical" use of enum. it's just an obfuscation of int, so we did use ints in the way an enum would work, ( with an int having a value that means something, for example, our map is an "array" that contains numbers, each number representing a type of "tile"
+// we used ints in the way an enum would work, ( with an int having a value that means something, for example, our map is an "array" that contains numbers, each number representing a type of "tile"
 //Proper use of extern variable
-// TODO: add this
+// None of the casses ended up needing an extern variable the way that we did it. For example, the battle class and the driver both got either a copy of monster and player or a pointer to the player so we had all of the variables and methods we needed. 
 //Proper use of static variable
-// TODO: add this (just add something dumb, we just used members of character object to keep track of anything that might have been static I think ) 
+// we just used members of character object to keep track of anything that might have been static
 //Logical use of a struct
 // we used objects instead of structs, as they are fairly similar, but objects can have non-static methods, which was nice for map, and character.
 //Logical use of random number generator
@@ -50,7 +50,6 @@ Character * playerpointer;
 
 //aaaaah
 void onexit(Character p){
-  // do some shit if you make it to the exit :^)
   int choice;
 
   cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXNN0KNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
@@ -140,8 +139,6 @@ void help(){
   cin >> randy;
 }
 int main(){
-  // RIGHT HERE JASHDKHASJKDHKJAHSDKJHAKJSHDKJAHSKDHK
-  //extern const int gamerunning = 1;
   
   cout << "#     #" << endl;
   cout << "#  #  # ###### #       ####   ####  #    # ######    #####  ####     ##### #    # ###### " << endl;
@@ -227,14 +224,6 @@ Character& playy = player;
 Map level = Map(difficulty*9);
 help();
 
-// get the users windows account name, and set the character name to that
-// generate a Character
-// should there be prebuilt characters?
-
-//vector<vector<int>> map = makemap(difficulty,difficulty); // <-- difficulty increases map size ?
-// make a dungeon object
-
-// loooooooop
 int event = 0;
 
 while (player.getHp() > 0) {
@@ -263,7 +252,6 @@ while (player.getHp() > 0) {
       exit(1);
     }
     else if (choice == "stats" or choice == "inventory" ){
-      //TODO: this LOL
       cout << player.getHp() << "/" << player.getMaxHp() << endl;
       cout << "You have " << player.getGold() << " Gold, and " << player.getXp() << "/" << player.getLevel()*100 << " Xp for next level" << endl;
       cout << "Your inventory: " << endl;
@@ -280,17 +268,9 @@ while (player.getHp() > 0) {
         cout << "Invalid choice. Please choose from W A S D" << endl;
     }
     cout << event << " is your event" <<endl;
-//    cout << event;
-//    cin >> cname;
-    // run a function to generate options < -- this is better than a static setup because you can use it for battle, or for map traversal
     if (event == 1) {// fight
-      // generate a monster... it scales based on difficulty, AND player level kekw
-      //TODO:: at a higher level, summon cooler monsters ( based on name and art ? )
       Monster m = Monster(difficulty+ (player.getLevel()* 2));
-      //cout << "you fight a " << m.getName() << endl;
-      //cout << "enter anything to confirm that you read this message:";
-      //player.setHp(player.getHp()-3);
-      Battle b = Battle(&player,m); // what THE FUCK !!?
+      Battle b = Battle(&player,m);
 
 
       int a = b.fight();
