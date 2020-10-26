@@ -192,7 +192,7 @@ class Monster
 class Item
 {
     protected:
-        string weps [5] = {"Red Shell", "Master Sword", "AK-47", "Ray Gun", "Nuclear Warhead", "Longsword", "Short Bow", "Katana", "dagger", "hand axe", "hammer", "pocket sand"};
+        string weps [12] = {"Red Shell", "Master Sword", "AK-47", "Ray Gun", "Nuclear Warhead", "Longsword", "Short Bow", "Katana", "dagger", "hand axe", "hammer", "pocket sand"};
         string tools[5] = {"Swirling Red Potion","Healing Potion","Dr. Pepper","Pizza Slice", "Heroin"};
         //string
         int strengthmod;

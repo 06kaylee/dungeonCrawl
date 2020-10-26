@@ -21,10 +21,10 @@ int Battle::getAttackInput() {
 	int i = 0;
 	for (i=0;i<cha->getInventory().size();i++){
 		if (cha->getInventory()[i].getType() == 1){
-			cout << i+2 << ": Attack with your +"<<cha->getInventory()[i].getStrength()<<" " << cha->getInventory()[i].getName() << "(durability remaining:" << cha->getInventory()[i].getUses() << ")" << endl;
+			cout << i+2 << ": Attack with your +"<<cha->getInventory()[i].getStrength()<<" " << cha->getInventory()[i].getName() << endl;//"(durability remaining:" << cha->getInventory()[i].getUses() << ")" << endl;
 		}
 		else {
-			cout << i+2 << ": Heal yourself with your +"<<cha->getInventory()[i].getStrength()<<" " << cha->getInventory()[i].getName() << "(durability remaining:" << cha->getInventory()[i].getUses() << ")" << endl;
+			cout << i+2 << ": Heal yourself with your +"<<cha->getInventory()[i].getStrength()<<" " << cha->getInventory()[i].getName() << endl;//"(durability remaining:" << cha->getInventory()[i].getUses() << ")" << endl;
 		}
 	}
 	cout << i+2 << ": Run away, like a coward!" << endl;

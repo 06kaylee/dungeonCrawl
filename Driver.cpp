@@ -141,6 +141,8 @@ void help(){
 }
 int main(){
   // RIGHT HERE JASHDKHASJKDHKJAHSDKJHAKJSHDKJAHSKDHK
+  //extern const int gamerunning = 1;
+  
   cout << "#     #" << endl;
   cout << "#  #  # ###### #       ####   ####  #    # ######    #####  ####     ##### #    # ###### " << endl;
   cout << "#  #  # #      #      #    # #    # ##  ## #           #   #    #      #   #    # #      " << endl;
