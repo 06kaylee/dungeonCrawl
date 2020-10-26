@@ -23,23 +23,6 @@
 // random numbers are all over the place, from generating the map, to damage dealt in combat, and reward for winning, or even the event type when you enter a treasure room.
 
 
-
-You must include a code block at the top of your file explaining how you satisfied each rubric goal for any of the points.
-
-All labs must compile for any credit. If you get docked for this, you may challenge this with a demonstration, but the code has to be identical to what you submitted. 
-
-
-
-
-
-
-
-
-
-
-
-
-
 #include <iostream>
 #include <vector>
 #include <time.h>
