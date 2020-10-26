@@ -1,3 +1,6 @@
+//Authors: Ethan Smith, Aramis Hahne, Kaylee Hall
+//Class:CS-3150-Dr.Cantrell
+//Version: 10/25/20
 // yeah so this is a header LOL
 #include <iostream>
 #include <vector>
@@ -189,7 +192,7 @@ class Monster
 class Item
 {
     protected:
-        string weps [5] = {"Red Shell", "Master Sword", "AK-47", "Ray Gun", "Nuclear Warhead"};
+        string weps [5] = {"Red Shell", "Master Sword", "AK-47", "Ray Gun", "Nuclear Warhead", "Longsword", "Short Bow", "Katana", "dagger", "hand axe", "hammer", "pocket sand"};
         string tools[5] = {"Swirling Red Potion","Healing Potion","Dr. Pepper","Pizza Slice", "Heroin"};
         //string
         int strengthmod;

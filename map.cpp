@@ -1,3 +1,6 @@
+//Authors: Ethan Smith, Aramis Hahne, Kaylee Hall
+//Class:CS-3150-Dr.Cantrell
+//Version: 10/25/20
 #include <iostream>
 #include <vector>
 

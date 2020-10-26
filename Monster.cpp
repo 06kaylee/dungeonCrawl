@@ -1,3 +1,7 @@
+//Authors: Ethan Smith, Aramis Hahne, Kaylee Hall
+//Class:CS-3150-Dr.Cantrell
+//Version: 10/25/20
+
 #include <iostream>
 //#include "obj.h"
 
@@ -5,7 +9,7 @@ using namespace std;
 
 //name will be like " goblin", or "CS professor")
   //
-    Monster::Monster(){// this should probably never get called :^) 
+    Monster::Monster(){// this should probably never get called :^)
       int n = rand() % 3;
       name = "DEFAULT FOOKIN MONSTER";
       maxhp = 10 + rand() % 10;

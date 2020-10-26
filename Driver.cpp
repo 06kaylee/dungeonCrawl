@@ -1,4 +1,5 @@
 //Authors: Ethan Smith, Aramis Hahne, Kaylee Hall
+//Class:CS-3150-Dr.Cantrell
 //Version: 10/25/20
 
 #include <iostream>
@@ -30,9 +31,7 @@ Character * playerpointer;
 void onexit(Character p){
   // do some shit if you make it to the exit :^)
   int choice;
-  cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-  cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-  cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
+
   cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXNN0KNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
   cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMXOOOkxdo:',,..;oddxOKXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
   cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXOdl:'...  'l:. ..;' .,. .,;:oxOXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
@@ -79,7 +78,8 @@ void onexit(Character p){
   cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
   cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
   cout << endl;
-  cout << "An old man is guarding an exit to the dungeon. As you approach, he says 'For 100 gold, I'll let you out!' " << endl;
+  cout << "An old man is guarding an exit to the dungeon. As you approach, he says 'For \x1B[33m100 gold\x1B[37m, I'll let you out!' " << endl;
+  cout << "you currently have \x1B[33m" << player.getGold() << " Gold\x1B[37m" << endl;
   cout << "1: Pay him the 100 gold" << endl;
   cout << "2: Leave" << endl;
   cin >> choice;
@@ -147,7 +147,6 @@ int main(){
   cout << endl;
 
   cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-  cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
   cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNkok0KWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
   cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMK,  ..,cdOXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
   cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMK,        .;lx0NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
@@ -184,7 +183,6 @@ int main(){
   cout << "MMMNc                                                                                          ,KMMM" << endl;
   cout << "MMMWkccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccxNMMM" << endl;
   cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-  cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
 
 
 string choice;
@@ -218,6 +216,9 @@ int event = 0;
 
 while (player.getHp() > 0) {
     //cin >> cname;
+    if (player.getHp()< player.getMaxHp()/2){
+      player.setHp(player.getHp()+1);// passive regeneration, so you can't get stuck on 1 hp or something
+  }
     system("CLS");
     level.printMap();
     cout << "Select a direction to move! (W A S D ): ";
@@ -297,12 +298,8 @@ while (player.getHp() > 0) {
     if (event == 2) {
       // handle treasure here :^)
       int whathappens = 1 + rand() % 100;
-      if (whathappens > 60) {
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
+      if (whathappens > 80) {
+
         cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWNX0OkOKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
         cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXOdlcc;,'..   .;oKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
         cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKx:.                .lKMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
@@ -340,10 +337,7 @@ while (player.getHp() > 0) {
         cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0;      .c0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
         cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWKxo;'..,:ox0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
         cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWK0KXXNNWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << endl;
+                cout << endl;
         cout << "You have come across a ghost!" << endl;
         cout << "Answer his question in order to get a reward!" << endl;
         int ghostChoice = rand() % 5;
@@ -361,7 +355,7 @@ while (player.getHp() > 0) {
             cout << "CORRECT" << endl;
             int randomGold = 3 + (rand() % 15);
             player.setGold(player.getGold() + randomGold);
-            cout << "You received " << randomGold << " gold!" << endl;
+            cout << "You received \x1B[33m" << randomGold << "\x1B[37m gold!" << endl;
           }
         }
         else if (ghostChoice == 3) {
@@ -395,7 +389,7 @@ while (player.getHp() > 0) {
             cout << "CORRECT!" << endl;
             int randomGold = 5 + (rand() % 15);
             player.setGold(player.getGold() + randomGold);
-            cout << "You received " << randomGold << " gold!" << endl;
+            cout << "You received \x1B[33m" << randomGold << "\x1B[37m gold!" << endl;
           }
         }
         else if (ghostChoice == 1) {
@@ -412,7 +406,7 @@ while (player.getHp() > 0) {
             cout << "CORRECT!" << endl;
             int randomGold = 5 + (rand() % 15);
             player.setGold(player.getGold() + randomGold);
-            cout << "You received " << randomGold << " gold!" << endl;
+            cout << "You received \x1B[33m" << randomGold << "\x1B[37m gold!" << endl;
           }
         }
         else {
@@ -426,7 +420,7 @@ while (player.getHp() > 0) {
             cout << "CORRECT!" << endl;
             int randomGold = 5 + (rand() % 15);
             player.setGold(player.getGold() + randomGold);
-            cout << "You received " << randomGold << " gold!" << endl;
+            cout << "You received \x1B[33m" << randomGold << "\x1B[37m gold!" << endl;
           } else {
             cout << "WRONG!" << endl;
             cout << "You get nothing!" << endl;
@@ -434,7 +428,7 @@ while (player.getHp() > 0) {
         }
 
       }
-      else if (whathappens > 40){
+      else if (whathappens > 60){
         //create item
         Item newItem = Item();
         cout << "You found: " << newItem.getName() << endl;
@@ -443,10 +437,8 @@ while (player.getHp() > 0) {
         inventory.push_back(newItem);
         player.setInventory(inventory);
       }
-      else if (whathappens > 20) {
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWNNNNWWWWWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
+      else if (whathappens > 40) {
+              cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWWNNNNWWWWWWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
         cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMXd;'...',,,,,,;:coxOKNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
         cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMW0o'                   .':ldx0XWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
         cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNk:.                            .;ldOXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
@@ -479,21 +471,19 @@ while (player.getHp() > 0) {
         cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWX0kdl:,..            ck. .:OWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
         cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWX0kxolc;'.    ck,:OWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
         cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWNKOxockXKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-        cout << endl;
+  cout << endl;
         int randomGold = 10 + (rand() % 20);
-        cout << "You've found " << randomGold << " gold!" << endl;
+        cout << "You enter a dark room, but in the corner, you see a dim glow" << endl;
+        cout << "You've found \x1B[33m" << randomGold << " gold\x1B[37m!" << endl;
         player.setGold(player.getGold() + randomGold);
       }
-      else if (whathappens > 10) {
+      else if (whathappens > 15) {
         cout << "The room is empty..." << endl;
       }
       else {
-        cout << "The walls are closing in..." << endl;
         int randomHealth = 1 + (rand() % 5);
+        cout << "The room was trapped! a dart shoots out of the wall, hitting you for \x1B[91m"<< randomHealth<< "\x1B[37m damage" << endl;
+
         player.setHp(player.getHp() - randomHealth);
       }
       cout << "Enter anything to leave the room: " << endl;

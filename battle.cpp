@@ -1,3 +1,7 @@
+//Authors: Ethan Smith, Aramis Hahne, Kaylee Hall
+//Class:CS-3150-Dr.Cantrell
+//Version: 10/25/20
+
 #include <iostream>
 //#include <stdlib.h>
 using namespace std;
@@ -100,7 +104,7 @@ int Battle::fight(){
 				cha->getInventory()[attack_option].setUses(cha->getInventory()[attack_option].getUses()-1);
 
 				int heal = cha->getInventory()[attack_option].getStrength() + (rand() % 5);
-				cout << "It heals you for " << heal << "HP!" << endl;
+				cout << "It heals you for \x1B[32m" << heal << "HP\x1B[37m!" << endl;
 				cha->setHp(cha->getHp()+heal);
 			}
 

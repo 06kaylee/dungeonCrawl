@@ -1,3 +1,7 @@
+//Authors: Ethan Smith, Aramis Hahne, Kaylee Hall
+//Class:CS-3150-Dr.Cantrell
+//Version: 10/25/20
+
 #include <iostream>
 #include <vector>
 
@@ -19,9 +23,9 @@ using namespace std;
         }
         Character::Character(string n) {
           name = n;
-          maxhp = 30;
+          maxhp = 35;
           hp = maxhp;
-          strength = 10;
+          strength = 12;
           maxmana = 2;
           mana = maxmana;
           alive = 1;
