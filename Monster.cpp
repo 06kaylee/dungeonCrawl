@@ -5,7 +5,7 @@ using namespace std;
 
 //name will be like " goblin", or "CS professor")
   //
-    Monster::Monster(){
+    Monster::Monster(){// this should probably never get called :^) 
       int n = rand() % 3;
       name = "DEFAULT FOOKIN MONSTER";
       maxhp = 10 + rand() % 10;
@@ -14,16 +14,16 @@ using namespace std;
       alive = 1;
     }
     Monster::Monster(int diff){
-
-        int n = rand() % 3;// this sets the monster's name
-        name = names[n];
+        int n = rand() % img.size();// this sets the monster's name
+        name = img[n][0];
+        image = img[n];
         maxhp = 10 + rand() % diff*3;
         hp=  maxhp;
         //Commented out the rand in strength; will change later for different types of monsters
         strength = 3 + rand() % diff; //+ rand() % diff;
         //generates a random monster based on the game's difficulty
         // can use math.random * diff or something :^)
-        alive = 1;// it's ALIVE! 
+        alive = 1;// it's ALIVE!
     }
     Monster::Monster(string n,int h,int s){
         name = n;
@@ -78,50 +78,10 @@ using namespace std;
       }
     }
     void Monster::printImage(){// omegalul
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMNx:coOXWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMWXNMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMW0;   .;o0WMMMMMMMMMMMMMMMMMMMMMMMNOo;;OMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMNd.    .;kNMMMMMMMMMMMMMMMMMMNkc'   cNMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMM0;      ,kNKkoc:;:cccoxONWO;    .oXMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMNx;.    .,.            ;c.    ;kWMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMW0;                     .,oONMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMXo.                   ,KMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMX;       o      o     ;0WMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMNl                     '0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMXc         __         .kMMMMMXOKWMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMXc                   lNMMMMWo .oXMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMNo.               .xNMMMMMWl   lNMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMWO:.          .'oKMMMMMMMMx.   lNMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMNO:.        .oNMMMMMMMMMMk.   .OMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMNo.           'OMMMMMMMMMMk..,cdXMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMXc              ,0MMMMMMMMMx..kWMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMNc                ;KMMMMMMM    cXMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMx.                 ,dkK    oxOOXMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMNc                         kNMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMX:                   '0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMk.                    ;KMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMM0'                      oWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMX:                       lWMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMXc                        ;XMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMWo                         .xMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMk.                          ;XMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMM0doool. .:c::;;'''''''.     .xMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMK, oWMMMMMWNWWNNN0, 'xO0NMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMO..kMMMMMMMMMMMMMk..xMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMx..OMMMMMMMMMMMMMd '0MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMx.'0MMMMMMMMMMMMWl ;XMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMO..dMMMMMMMMMMMMWl :NMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMN: cNMMMMMMMMMMMN: cNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMX: 'xkONMMMMMMMMX; cXXkxXMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMM0;.''':0MMMMMMMMWl .''..xMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMNXXXXNMMMMMMMMMMNOkOOOKWMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
-      cout << "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM" << endl;
+      for (int x = 1;x<image.size();x++){
+        cout << image[x] << endl;
+      }
+
     }
     void Monster::monsterDieText(){
       cout << "The " << getName() << " died!" << endl;

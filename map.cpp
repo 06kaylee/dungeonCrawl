@@ -16,17 +16,17 @@ Map::Map(int x) {
 vector<vector<int>> Map::getMap(){
     return area;
 }//asdhjahsdkjhakjshdkahskdjhakj
-void Map::repopulate(int num){// this method tries to add some new stuff to the map when you visit an exit... or something... whenever you call it really, but it makes it so that the map doesn;t become empty with no way to progress 
+void Map::repopulate(int num){// this method tries to add some new stuff to the map when you visit an exit... or something... whenever you call it really, but it makes it so that the map doesn;t become empty with no way to progress
   for (int x=0;x<num;x++){
     int p1 = 1 + rand() % area.size()-1;
     int p2 = 1 + rand() % area[0].size()-1;
       if (area[p1][p2] == 1) {
         int chance = rand() % 100 + 1;
         if (chance == 100) {
-            area[x][y] = 3;
+            area[p1][p2] = 3;
         }
         else if (chance >= 95) {
-            area[x][y] = 2;
+            area[p1][p2] = 2;
         }
       }
   }
@@ -52,10 +52,10 @@ void Map::fillMap(){
                 // trap? = 4 (TODO)
                 // exit = 5? (TODO) (place this nonrandomly, and last
                 int chance = rand() % 100 + 1;
-                if (chance == 100) {
+                if (chance >= 99) {
                     area[x][y] = 3;
                 }
-                else if (chance >= 95) {
+                else if (chance >= 91) {
                     area[x][y] = 2;
                 }
             }
@@ -90,17 +90,20 @@ int Map::move(int x,int y) {
     if (y != 0 && y + playery < area[0].size() && y+playery > 0) {
         if (area[playerx][playery+y] != 0){ playery += y; }
     }
-    if (area[playerx][playery] == 2){
-      //cout << "fight time ";
-      fight++;
+    if (area[playerx][playery] == 2){// hit a monster
+      fight = 1;
     }
+    else if (area[playerx][playery] == 3) { // hit treasure
+      fight = 2;
+    }
+    else if (area[playerx][playery] == 5) {// hit an exit
+      fight = 3;
+    }
+
     if (area[playerx][playery] != 5){// if you hit the exit, you don't overright it ?
       area[playerx][playery] = 6;
     }
-    if (fight){
-      return 1;
-    }
-    return 0;
+    return fight;
     }
 // in this implementation, 1= a wall, while 0 = a hall, or traversable area
 vector<vector<int>> Map::generateHalls(vector<vector<int>> vec,int x,int y) {

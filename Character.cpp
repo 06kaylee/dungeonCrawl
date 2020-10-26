@@ -5,17 +5,6 @@
 
 using namespace std;
 
-//class Character {
-//protected:
-//    string name;
-//    int hp;
-//    int maxhp;
-//    int strength;
-//    int mana;
-//    int maxmana;
-//    vector<Item> inventory;
-//    public:
-        // contructor
         Character::Character() {
             name = "husk";
             maxhp = 25;
@@ -30,7 +19,7 @@ using namespace std;
         }
         Character::Character(string n) {
           name = n;
-          maxhp = 25;
+          maxhp = 30;
           hp = maxhp;
           strength = 10;
           maxmana = 2;
@@ -38,7 +27,10 @@ using namespace std;
           alive = 1;
           xp = 0;
           level = 1;
-          gold =0;
+          gold =1;
+          inventory.push_back(Item());
+          // inventory.push_back(Item());
+          // inventory.push_back(Item());
         }
         string Character::getName(){
             return name;
@@ -59,10 +51,10 @@ using namespace std;
         void  Character::levelup(){
           level++;
           cout << "You leveled up! You are now level" << level << endl;
-          int nhp = 2 + rand() % level;
+          int nhp = 2 + rand() % level*5;
           cout << "You gained " << nhp << "maximum HP, and 1 Strength " << endl;
           maxhp += nhp;
-          hp += nhp;
+          hp = maxhp;
           strength ++;
         }
         int  Character::getLevel(){
@@ -82,6 +74,9 @@ using namespace std;
         }
         void Character::setHp(int h){
             hp = h;
+            if (hp > maxhp){
+              hp = maxhp;
+            }
         }
         int Character::getMaxHp(){
             return maxhp;
@@ -113,15 +108,19 @@ using namespace std;
         void Character::setAlive(bool b){
           alive = b;
         }
+        vector<Item> Character::getInventory(){
+          return inventory;
+        }
+        void Character::setInventory(vector<Item> v){
+          inventory = v;
+        }
         int Character::attack(){
           int dmg = rand () % (strength + 1);
           return dmg;
         }
         void Character::takeDmg(int dmg){
-          int hp = getHp();
-          hp = hp - dmg;
-          setHp(hp);
-          if (hp <= 0){
+          setHp(getHp()-dmg);
+          if (getHp() <= 0){
             setAlive(0);
           //  characterDieText();
           }

@@ -4,7 +4,21 @@
 
 using namespace std;
 
-
+    Item::Item() {
+      //picks a random name from the three in the array
+      type = 1 + (rand() % 2);
+      cout << type << "type";
+      if (type == 1){
+      name = weps[rand() % sizeof(weps)/sizeof(weps[0])];
+    }
+    else {
+      cout << "It's a tool" << endl;
+      name = tools[rand() % sizeof(tools)/sizeof(tools[0])];
+    }
+      //random strength from 1 to the level of the player
+      strengthmod = 1 + (rand() % 5);
+      uses =3;
+    }
     Item::Item(string n,int s){
         name = n;
         strengthmod = s;
@@ -20,4 +34,18 @@ using namespace std;
     }
     void Item::setStrength(int s){
         strengthmod = s;
+    }
+    int Item::getUses(){
+      return uses;
+    }
+    void Item::setUses(int u){
+      uses = u;
+    }
+    void Item::printitem(){
+      cout << strengthmod;
+      cout << uses;
+      cout << name << endl;
+    }
+    int Item::getType(){
+      return type;
     }
